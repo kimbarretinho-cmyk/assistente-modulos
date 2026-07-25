@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assistente Pessoal</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#fff;--fg:#111;--fg2:#666;--bd:#ddd;--hov:#f5f5f5}
+@media(prefers-color-scheme:dark){:root{--bg:#0a0a0a;--fg:#eee;--fg2:#999;--bd:#333;--hov:#1a1a1a}}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--fg);padding:16px;max-width:700px;margin:0 auto}
+button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
+.M{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap;border-bottom:1px solid var(--bd);padding-bottom:12px}
+.m{padding:10px 14px;border-radius:10px;font-size:13px;font-weight:500;color:var(--fg2);background:transparent}
+.m:hover{background:var(--hov);color:var(--fg)}
+.m.a{background:var(--fg);color:var(--bg)}
+.S{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap}
+.s{padding:6px 12px;border-radius:8px;font-size:12px;font-weight:500;color:var(--fg2);background:transparent}
+.s:hover{background:var(--hov);color:var(--fg)}
+.s.a{background:var(--hov);color:var(--fg)}
+.C{border:1px solid var(--bd);border-radius:12px;padding:16px;margin-bottom:12px}
+.T{font-size:16px;font-weight:500;margin-bottom:10px}
+.I{width:100%;padding:10px 12px;border:1px solid var(--bd);border-radius:10px;font-size:14px;background:transparent;color:inherit;margin-bottom:8px;outline:none}
+.I:focus{border-color:var(--fg)}
+.B{padding:10px 16px;border-radius:10px;font-size:14px;font-weight:500;background:var(--fg);color:var(--bg)}
+.B:hover{opacity:.85}
+.B2{background:var(--hov);color:var(--fg)}
+.Bs{padding:6px 12px;font-size:12px}
+.t{display:inline-flex;align-items:center;padding:4px 10px;border-radius:6px;font-size:12px;background:var(--hov);color:var(--fg2);margin:2px}
+.E{text-align:center;padding:40px 20px;color:var(--fg2)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.Sb{text-align:center;padding:14px;border:1px solid var(--bd);border-radius:10px}
+.Sv{font-size:24px;font-weight:500}
+.Sl{font-size:12px;color:var(--fg2);margin-top:4px}
+.Pb{height:8px;border-radius:4px;background:var(--hov);overflow:hidden;margin-top:6px}
+.Pf{height:100%;border-radius:4px;background:var(--fg);transition:width .3s}
+.ra{opacity:0;transition:opacity .15s}
+.C:hover .ra{opacity:1}
+.db{color:#e74c3c;font-size:12px;padding:4px 8px;border-radius:6px}
+.db:hover{background:rgba(231,76,60,.1)}
+.op{padding:12px 16px;border:1px solid var(--bd);border-radius:10px;margin-bottom:8px;cursor:pointer;font-size:14px;transition:border-color .15s}
+.op:hover{border-color:var(--fg)}
+.op.cr{border-color:#27ae60;background:rgba(39,174,96,.08)}
+.op.wr{border-color:#e74c3c;background:rgba(231,76,60,.08)}
+.fc{perspective:800px;cursor:pointer}
+.fci{position:relative;width:100%;min-height:140px;transition:transform .5s;transform-style:preserve-3d;border-radius:12px;border:1px solid var(--bd)}
+.fc.fl .fci{transform:rotateY(180deg)}
+.fcf,.fcb{position:absolute;width:100%;min-height:140px;backface-visibility:hidden;display:flex;align-items:center;justify-content:center;padding:24px;font-size:16px;font-weight:500;text-align:center;border-radius:12px}
+.fcb{transform:rotateY(180deg);background:var(--hov)}
+.td{font-size:48px;font-weight:500;text-align:center;margin:16px 0;font-variant-numeric:tabular-nums}
+.kc{border:1px solid var(--bd);border-radius:10px;padding:10px;min-height:160px}
+.kch{font-size:13px;font-weight:500;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--bd)}
+.kca{padding:8px 10px;border:1px solid var(--bd);border-radius:8px;margin-bottom:6px;font-size:12px;position:relative}
+.kca:hover{border-color:var(--fg)}
+.hr{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--bd)}
+.hr:last-child{border-bottom:none}
+.hc{width:22px;height:22px;border-radius:5px;border:2px solid var(--bd);cursor:pointer;display:flex;align-items:center;justify-content:center}
+.hc.ck{background:var(--fg);border-color:var(--fg)}
+.mbt{width:36px;height:36px;border-radius:8px;border:1px solid var(--bd);font-size:18px;display:flex;align-items:center;justify-content:center;cursor:pointer;background:transparent}
+.mbt:hover{border-color:var(--fg)}
+.mbt.s{background:var(--fg);border-color:var(--fg);color:var(--bg)}
+.ec{padding:10px;border:1px solid var(--bd);border-radius:10px;margin-bottom:6px}
+.ed{font-size:11px;color:var(--fg2);margin-bottom:2px}
+.et{font-size:13px;line-height:1.5}
+.wc{width:120px;height:120px;border-radius:50%;border:3px solid var(--bd);margin:0 auto 14px;display:flex;align-items:center;justify-content:center;flex-direction:column;position:relative;overflow:hidden}
+.wf{position:absolute;bottom:0;left:0;right:0;background:#3498db;opacity:.25;transition:height .5s}
+.wt{position:relative;z-index:1;font-size:28px;font-weight:500}
+.wl{position:relative;z-index:1;font-size:11px;color:var(--fg2)}
+.dd{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;border:1px solid var(--bd)}
+.dd.f{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.mc{width:18px;height:18px;border-radius:4px;border:2px solid var(--bd);cursor:pointer;display:flex;align-items:center;justify-content:center}
+.mc.ck{background:var(--fg);border-color:var(--fg)}
+.rb{padding:14px;border:1px solid var(--bd);border-radius:10px;background:var(--hov);text-align:center}
+.rv{font-size:22px;font-weight:500}
+.rl{font-size:11px;color:var(--fg2);margin-top:2px}
+.df{padding:8px 14px;border-radius:8px;font-size:12px;border:1px solid var(--bd);background:transparent}
+.df:hover{background:var(--hov)}
+.df.s{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.sm{padding:10px 14px;border-radius:10px;margin-bottom:8px;border:1px solid var(--bd);font-size:13px}
+.smh{display:flex;justify-content:space-between;font-size:11px;color:var(--fg2);margin-bottom:4px}
+.bc{width:50px;height:70px;border-radius:5px;background:var(--fg);display:flex;align-items:center;justify-content:center;color:var(--bg);font-size:9px;font-weight:500;text-align:center;padding:3px}
+.su{padding:14px;border:1px solid var(--bd);border-radius:10px;background:var(--hov);font-size:13px;line-height:1.6;white-space:pre-wrap}
+.sr{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--bd);font-size:12px}
+.sr:last-child{border-bottom:none}
+@media(max-width:480px){.g2,.g3{grid-template-columns:1fr}.td{font-size:36px}.M{padding:8px 4px}.m{padding:8px 12px;font-size:12px}}
+</style>
+<base target="_blank">
+</head>
+<body>
+<div id="app">
+<div class="M" id="Mn">
+  <button class="m a" data-m="wa" onclick="SM('wa')">💬 WhatsApp</button>
+  <button class="m" data-m="est" onclick="SM('est')">📚 Estudos</button>
+  <button class="m" data-m="sau" onclick="SM('sau')">🍎 Saúde</button>
+  <button class="m" data-m="pro" onclick="SM('pro')">⚡ Produtividade</button>
+</div>
+<div id="Ct"></div>
+</div>
+
+<script>
+(function(){
+const $=id=>document.getElementById(id),Ct=$('Ct');
+let M='wa',S={wa:'tm',est:'fl',sau:'ag',pro:'po'};
+let D={wa:{t:[],c:[],sc:[],h:[]},est:{d:[],q:[],b:[],su:[]},sau:{w:{g:2000,t:0,h:[]},i:null,m:[],sl:[]},pro:{p:{ss:[]},k:{t:[],d:[],dn:[]},hb:[],di:[]}};
+function L(){try{D.wa=JSON.parse(localStorage.getItem('ma_wa_data')||'null')||D.wa;D.est=JSON.parse(localStorage.getItem('ma_est_data')||'null')||D.est;D.sau=JSON.parse(localStorage.getItem('ma_sau_data')||'null')||D.sau;D.pro=JSON.parse(localStorage.getItem('ma_pro_data')||'null')||D.pro}catch(e){}}
+function SV(){localStorage.setItem('ma_wa_data',JSON.stringify(D.wa));localStorage.setItem('ma_est_data',JSON.stringify(D.est));localStorage.setItem('ma_sau_data',JSON.stringify(D.sau));localStorage.setItem('ma_pro_data',JSON.stringify(D.pro))}
+L();
+const E=t=>(t||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const FT=s=>{const m=Math.floor(s/60),sc=s%60;return String(m).padStart(2,'0')+':'+String(sc).padStart(2,'0')};
+const WKD=()=>{const d=[];for(let i=6;i>=0;i--){const x=new Date();x.setDate(x.getDate()-i);d.push({date:x.toISOString().split('T')[0],lb:x.toLocaleDateString('pt-BR',{weekday:'short'}).replace('.','')})}return d};
+
+function SM(m){M=m;document.querySelectorAll('.m').forEach(b=>b.classList.remove('a'));document.querySelector('[data-m="'+m+'"]').classList.add('a');if(M==='wa')RWA();else if(M==='est')RES();else if(M==='sau')RSA();else RPR()}
+
+/* WHATSAPP */
+function RWA(){let h='<div class="S">';['tm','ct','sc','hi'].forEach(x=>h+='<button class="s '+(S.wa===x?'a':'')+'" onclick="SS('wa',''+x+'')">'+{tm:'Templates',ct:'Contatos',sc:'Agendador',hi:'Histórico'}[x]+'</button>');h+='</div>';
+if(S.wa==='tm'){h+='<div class="C"><div class="T">Novo template</div><input class="I" id="wt-n" placeholder="Nome"><textarea class="I" id="wt-b" rows="3" placeholder="Mensagem" style="resize:vertical"></textarea><input class="I" id="wt-tg" placeholder="Tags"><button class="B Bs" onclick="WAT()">Salvar</button></div>';
+if(!D.wa.t.length)h+='<div class="E">Nenhum template ainda.</div>';
+else D.wa.t.forEach((t,i)=>{h+='<div class="C"><div style="display:flex;justify-content:space-between;align-items:flex-start"><div><div style="font-weight:500;font-size:14px">'+E(t.n)+'</div><div style="font-size:12px;color:var(--fg2);margin-top:2px">'+E(t.b)+'</div></div><div class="ra"><button class="db" onclick="WDT('+i+')">×</button></div></div></div>'})}
+else if(S.wa==='ct'){h+='<div class="C"><div class="T">Novo contato</div><input class="I" id="wc-n" placeholder="Nome"><input class="I" id="wc-p" placeholder="Telefone"><input class="I" id="wc-g" placeholder="Grupo"><button class="B Bs" onclick="WAC()">Adicionar</button></div>';
+if(!D.wa.c.length)h+='<div class="E">Nenhum contato.</div>';
+else{const gs=[...new Set(D.wa.c.map(c=>c.g||'Sem grupo'))];gs.forEach(g=>{h+='<div class="C"><div class="T">'+E(g)+'</div>';D.wa.c.filter(c=>(c.g||'Sem grupo')===g).forEach(c=>{const gi=D.wa.c.indexOf(c);h+='<div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--bd)"><div><div style="font-size:13px;font-weight:500">'+E(c.n)+'</div><div style="font-size:11px;color:var(--fg2)">'+E(c.p)+'</div></div><div class="ra"><button class="db" onclick="WDC('+gi+')">×</button></div></div>'});h+='</div>'})}}
+else if(S.wa==='sc'){h+='<div class="C"><div class="T">Agendar mensagem</div><select class="I" id="ws-t"><option value="">Template</option>';D.wa.t.forEach((t,i)=>h+='<option value="'+i+'">'+E(t.n)+'</option>');h+='</select><select class="I" id="ws-c"><option value="">Contato</option>';D.wa.c.forEach((c,i)=>h+='<option value="'+i+'">'+E(c.n)+'</option>');h+='</select><input class="I" type="datetime-local" id="ws-d"><button class="B Bs" onclick="WAS()">Agendar</button></div>';
+if(!D.wa.sc.length)h+='<div class="E">Nenhuma mensagem agendada.</div>';
+else{D.wa.sc.forEach((s,i)=>h+='<div class="C"><div style="display:flex;justify-content:space-between;align-items:center"><div style="font-size:13px">'+E(s.t)+' → '+E(s.c)+' <span class="t">'+E(s.d)+'</span></div><div class="ra"><button class="db" onclick="WDS('+i+')">×</button></div></div></div>')}}
+else{h+='<div class="g2" style="margin-bottom:14px"><div class="Sb"><div class="Sv">'+D.wa.h.length+'</div><div class="Sl">Mensagens</div></div><div class="Sb"><div class="Sv">'+D.wa.c.length+'</div><div class="Sl">Contatos</div></div></div>';
+if(!D.wa.h.length)h+='<div class="E">Nenhuma mensagem.</div>';
+else D.wa.h.slice().reverse().forEach(m=>h+='<div class="sm"><div class="smh"><span>'+E(m.c)+'</span><span>'+m.d+'</span></div>'+E(m.x)+'</div>')}
+Ct.innerHTML=h}
+window.SS=function(m,s){S[m]=s;if(m==='wa')RWA();else if(m==='est')RES();else if(m==='sau')RSA();else RPR()}
+window.WAT=function(){const n=$('wt-n').value.trim(),b=$('wt-b').value.trim(),tg=$('wt-tg').value;if(!n||!b)return;D.wa.t.push({n,b,tg});SV();RWA()}
+window.WDT=function(i){D.wa.t.splice(i,1);SV();RWA()}
+window.WAC=function(){const n=$('wc-n').value.trim(),p=$('wc-p').value.trim(),g=$('wc-g').value.trim();if(!n||!p)return;D.wa.c.push({n,p,g});SV();RWA()}
+window.WDC=function(i){D.wa.c.splice(i,1);SV();RWA()}
+window.WAS=function(){const ti=parseInt($('ws-t').value),ci=parseInt($('ws-c').value),d=$('ws-d').value;if(isNaN(ti)||isNaN(ci)||!d)return;D.wa.sc.push({t:D.wa.t[ti].n,c:D.wa.c[ci].n,d});SV();RWA()}
+window.WDS=function(i){D.wa.sc.splice(i,1);SV();RWA()}
+
+/* ESTUDOS */
+let ES={dk:-1,cd:0,fl:false},EQ={ix:0,sc:0,an:false,sl:null},EA=null,EST='topics';
+function RES(){let h='<div class="S">';['fl','si','le','su'].forEach(x=>h+='<button class="s '+(S.est===x?'a':'')+'" onclick="SS('est',''+x+'')">'+{fl:'Flashcards',si:'Simulados',le:'Leitura',su:'Resumos'}[x]+'</button>');h+='</div>';
+if(S.est==='fl'){if(ES.dk>=0){const dk=D.est.d[ES.dk],cd=dk.c[ES.cd];if(!cd){ES={dk:-1,cd:0,fl:false};return RES()}
+h+='<div style="margin-bottom:12px"><button class="B2 Bs" onclick="EBD()">← Voltar</button></div>';
+h+='<div style="text-align:center;margin-bottom:14px"><span class="t">'+E(dk.n)+'</span><span class="t">'+(ES.cd+1)+'/'+dk.c.length+'</span></div>';
+h+='<div class="fc '+(ES.fl?'fl':'')+'" onclick="EFL()"><div class="fci"><div class="fcf">'+E(cd.f)+'</div><div class="fcb">'+E(cd.b)+'</div></div></div>';
+if(ES.fl)h+='<div style="display:flex;justify-content:center;gap:10px;margin-top:14px"><button class="df" onclick="ERT(1)">Difícil</button><button class="df" onclick="ERT(2)">Médio</button><button class="df" onclick="ERT(3)">Fácil</button></div>';
+else h+='<div style="text-align:center;margin-top:14px;color:var(--fg2);font-size:12px">Toque para virar</div>'}
+else{h+='<div class="g2" style="margin-bottom:14px"><div class="Sb"><div class="Sv">'+D.est.d.length+'</div><div class="Sl">Baralhos</div></div><div class="Sb"><div class="Sv">'+D.est.d.reduce((a,d)=>a+d.c.length,0)+'</div><div class="Sl">Cartões</div></div></div>';
+h+='<div class="C"><div class="T">Novo baralho</div><input class="I" id="ed-n" placeholder="Nome"><button class="B Bs" onclick="ECD()">Criar</button></div>';
+if(!D.est.d.length)h+='<div class="E">Nenhum baralho.</div>';
+else D.est.d.forEach((d,i)=>{h+='<div class="C"><div style="display:flex;justify-content:space-between;align-items:center"><div><div style="font-weight:500">'+E(d.n)+'</div><div style="font-size:12px;color:var(--fg2)">'+d.c.length+' cartões</div></div><div style="display:flex;gap:6px"><button class="B Bs" onclick="ESTU('+i+')">Estudar</button><div class="ra"><button class="db" onclick="EDD('+i+')">×</button></div></div></div>';
+h+='<div style="margin-top:10px;display:flex;gap:6px"><input class="I" id="ef-'+i+'" placeholder="Frente" style="flex:1;margin-bottom:0"><input class="I" id="eb-'+i+'" placeholder="Verso" style="flex:1;margin-bottom:0"><button class="B2 Bs" onclick="EAC('+i+')">+</button></div></div>'})}}
+if(S.est==='si'){if(EQ.an&&D.est.q.length){const q=D.est.q[EQ.ix];h+='<div class="C"><div style="display:flex;justify-content:space-between;margin-bottom:12px"><span class="t">'+q.cat+'</span><span class="t">'+(EQ.ix+1)+'/'+D.est.q.length+'</span></div><div class="T" style="margin-bottom:14px">'+E(q.t)+'</div>';
+q.o.forEach((opt,oi)=>{let cl='op';if(oi===q.c)cl+=' cr';else if(oi===EQ.sl)cl+=' wr';h+='<div class="'+cl+'">'+String.fromCharCode(65+oi)+') '+E(opt)+'</div>'});
+h+='<div style="margin-top:14px;display:flex;justify-content:space-between;align-items:center"><div style="font-size:13px">Pontuação: <strong>'+EQ.sc+'</strong>/'+D.est.q.length+'</div>'+(EQ.ix<D.est.q.length-1?'<button class="B Bs" onclick="ENQ()">Próxima →</button>':'<button class="B Bs" onclick="EFQ()">Finalizar</button>')+'</div></div>'}
+else if(EQ.ix<D.est.q.length&&D.est.q.length){const q=D.est.q[EQ.ix];h+='<div class="C"><div style="display:flex;justify-content:space-between;margin-bottom:12px"><span class="t">'+q.cat+'</span><span class="t">'+(EQ.ix+1)+'/'+D.est.q.length+'</span></div><div class="T" style="margin-bottom:14px">'+E(q.t)+'</div>';q.o.forEach((opt,oi)=>h+='<div class="op" onclick="EAN('+oi+')">'+String.fromCharCode(65+oi)+') '+E(opt)+'</div>');h+='<div style="margin-top:14px;font-size:13px">Pontuação: <strong>'+EQ.sc+'</strong></div></div>'}
+else{h+='<div class="g2" style="margin-bottom:14px"><div class="Sb"><div class="Sv">'+D.est.q.length+'</div><div class="Sl">Questões</div></div><div class="Sb"><div class="Sv">'+[...new Set(D.est.q.map(q=>q.cat))].length+'</div><div class="Sl">Categorias</div></div></div>';
+h+='<div class="C"><div class="T">Nova questão</div><input class="I" id="eq-t" placeholder="Enunciado"><input class="I" id="eq-c" placeholder="Categoria">';
+for(let i=1;i<=4;i++)h+='<input class="I" id="eq-o'+i+'" placeholder="Opção '+String.fromCharCode(64+i)+'">';
+h+='<div style="display:flex;gap:6px;margin-bottom:10px">';for(let i=0;i<4;i++)h+='<button class="df" id="eq-a'+i+'" onclick="ESA('+i+')">'+String.fromCharCode(65+i)+'</button>';h+='</div><button class="B Bs" onclick="EAQ()">Adicionar</button></div>';
+if(D.est.q.length){h+='<div style="display:flex;gap:8px;margin-bottom:10px"><button class="B Bs" onclick="ESQ()">Iniciar</button><button class="B2 Bs" onclick="ECQ()">Limpar</button></div>';
+D.est.q.forEach((q,i)=>h+='<div class="C"><div style="display:flex;justify-content:space-between;align-items:flex-start"><div><span class="t">'+q.cat+'</span><div style="margin-top:4px;font-size:13px">'+E(q.t)+'</div></div><div class="ra"><button class="db" onclick="EDQ('+i+')">×</button></div></div></div>')}
+else h+='<div class="E">Nenhuma questão cadastrada.</div>'}}
+if(S.est==='le'){h+='<div class="g3" style="margin-bottom:14px"><div class="Sb"><div class="Sv">'+D.est.b.length+'</div><div class="Sl">Livros</div></div><div class="Sb"><div class="Sv">'+D.est.b.reduce((a,b)=>a+(b.cur||0),0)+'</div><div class="Sl">Págs lidas</div></div><div class="Sb"><div class="Sv">'+D.est.b.reduce((a,b)=>a+(b.g||0),0)+'</div><div class="Sl">Meta total</div></div></div>';
+h+='<div class="C"><div class="T">Novo livro</div><input class="I" id="el-t" placeholder="Título"><div class="g2"><input class="I" id="el-to" type="number" placeholder="Total páginas"><input class="I" id="el-g" type="number" placeholder="Meta diária"></div><button class="B Bs" onclick="EAL()">Adicionar</button></div>';
+if(!D.est.b.length)h+='<div class="E">Nenhum livro.</div>';
+else D.est.b.forEach((b,i)=>{const pc=b.to>0?Math.round((b.cur/b.to)*100):0;h+='<div class="C"><div style="display:flex;gap:12px;align-items:flex-start"><div class="bc">'+E(b.t.substring(0,10))+'</div><div style="flex:1"><div style="display:flex;justify-content:space-between;align-items:center"><div style="font-weight:500">'+E(b.t)+'</div><div class="ra"><button class="db" onclick="EDL('+i+')">×</button></div></div><div style="font-size:12px;color:var(--fg2);margin-bottom:6px">'+b.cur+'/'+b.to+' pags · Meta: '+b.g+'/dia</div><div class="Pb"><div class="Pf" style="width:'+pc+'%"></div></div><div style="font-size:11px;color:var(--fg2);margin-top:3px">'+pc+'%</div><div style="margin-top:10px;display:flex;gap:6px"><input class="I" type="number" id="elp-'+i+'" placeholder="Págs hoje" style="flex:1;margin-bottom:0"><button class="B2 Bs" onclick="EUL('+i+')">Atualizar</button></div></div></div></div>'})}
+if(S.est==='su'){h+='<div class="C"><div class="T">Gerar resumo</div><textarea class="I" id="es-t" rows="5" placeholder="Cole o texto aqui..." style="resize:vertical"></textarea><div style="display:flex;gap:6px;margin-bottom:10px"><button class="df '+(EST==='short'?'s':'')+'" onclick="ESS('short')">Curto</button><button class="df '+(EST==='medium'?'s':'')+'" onclick="ESS('medium')">Médio</button><button class="df '+(EST==='topics'?'s':'')+'" onclick="ESS('topics')">Tópicos</button></div><button class="B Bs" onclick="EGS()">Gerar</button></div>';
+if(D.est.su.length){h+='<div style="font-size:13px;color:var(--fg2);margin:14px 0 8px">Resumos salvos:</div>';D.est.su.forEach((s,i)=>{h+='<div class="C"><div style="display:flex;justify-content:space-between;align-items:flex-start"><div><span class="t">'+s.ty+'</span><div style="font-size:11px;color:var(--fg2);margin-top:2px">'+new Date(s.d).toLocaleString()+'</div></div><div class="ra"><button class="db" onclick="EDS('+i+')">×</button></div></div><div class="su" style="margin-top:8px">'+E(s.r)+'</div></div>'})}}
+Ct.innerHTML=h}
+window.ECD=function(){const n=$('ed-n').value.trim();if(!n)return;D.est.d.push({n,c:[]});SV();RES()}
+window.EDD=function(i){D.est.d.splice(i,1);SV();RES()}
+window.EAC=function(i){const f=$('ef-'+i).value.trim(),b=$('eb-'+i).value.trim();if(!f||!b)return;D.est.d[i].c.push({f,b,d:2});SV();RES()}
+window.ESTU=function(i){ES={dk:i,cd:0,fl:false};RES()}
+window.EBD=function(){ES={dk:-1,cd:0,fl:false};RES()}
+window.EFL=function(){ES.fl=!ES.fl;RES()}
+window.ERT=function(d){D.est.d[ES.dk].c[ES.cd].d=d;ES.cd++;ES.fl=false;if(ES.cd>=D.est.d[ES.dk].c.length)ES={dk:-1,cd:0,fl:false};SV();RES()}
+window.ESA=function(n){EA=n;for(let i=0;i<4;i++)$('eq-a'+i).classList.remove('s');$('eq-a'+n).classList.add('s')}
+window.EAQ=function(){const t=$('eq-t').value.trim(),c=$('eq-c').value.trim()||'Geral',o=[1,2,3,4].map(n=>$('eq-o'+n).value.trim()).filter(Boolean);if(!t||o.length<2||EA===null)return;D.est.q.push({t,cat:c,o,c:EA});EA=null;SV();RES()}
+window.EDQ=function(i){D.est.q.splice(i,1);SV();RES()}
+window.ECQ=function(){D.est.q=[];SV();RES()}
+window.ESQ=function(){EQ={ix:0,sc:0,an:false,sl:null};RES()}
+window.EAN=function(oi){if(EQ.an)return;EQ.sl=oi;EQ.an=true;if(oi===D.est.q[EQ.ix].c)EQ.sc++;SV();RES()}
+window.ENQ=function(){EQ.ix++;EQ.an=false;EQ.sl=null;RES()}
+window.EFQ=function(){EQ={ix:0,sc:0,an:false,sl:null};RES()}
+window.EAL=function(){const t=$('el-t').value.trim(),to=parseInt($('el-to').value)||0,g=parseInt($('el-g').value)||0;if(!t||!to)return;D.est.b.push({t,to,cur:0,g});SV();RES()}
+window.EDL=function(i){D.est.b.splice(i,1);SV();RES()}
+window.EUL=function(i){const p=parseInt($('elp-'+i).value)||0;D.est.b[i].cur=Math.min(D.est.b[i].cur+p,D.est.b[i].to);SV();RES()}
+window.ESS=function(t){EST=t;RES()}
+window.EGS=function(){const tx=$('es-t').value.trim();if(!tx)return;const s=tx.split(/[.!?]+/).filter(s=>s.trim().length>10);let r='';if(EST==='short')r=s.slice(0,2).join('. ')+'.';else if(EST==='medium')r=s.slice(0,4).join('. ')+'.';else r=s.map(s=>'• '+s.trim()).join('\n');D.est.su.unshift({ty:EST,r,d:Date.now()});SV();RES()}
+window.EDS=function(i){D.est.su.splice(i,1);SV();RES()}
+
+/* SAÚDE */
+let SSQ=null;
+function RSA(){let h='<div class="S">';['ag','im','re','so'].forEach(x=>h+='<button class="s '+(S.sau===x?'a':'')+'" onclick="SS('sau',''+x+'')">'+{ag:'Água',im:'IMC & Macros',re:'Refeições',so:'Sono'}[x]+'</button>');h+='</div>';
+if(S.sau==='ag'){const pc=Math.min(100,Math.round((D.sau.w.t/D.sau.w.g)*100));
+h+='<div class="C" style="text-align:center"><div class="wc"><div class="wf" style="height:'+pc+'%"></div><div class="wt">'+D.sau.w.t+'</div><div class="wl">/'+D.sau.w.g+'ml</div></div>';
+h+='<div style="display:flex;justify-content:center;gap:8px;margin-bottom:12px"><button class="B2 Bs" onclick="SAW(200)">+200ml</button><button class="B2 Bs" onclick="SAW(300)">+300ml</button><button class="B2 Bs" onclick="SAW(500)">+500ml</button></div>';
+h+='<div style="display:flex;justify-content:center;gap:8px;margin-bottom:12px"><button class="B Bs" onclick="SRW()">Zerar</button></div>';
+h+='<div style="font-size:13px;margin-bottom:6px">Meta:</div><div style="display:flex;gap:6px;justify-content:center">';[1500,2000,2500,3000].forEach(g=>h+='<button class="B '+(D.sau.w.g===g?'':'B2')+' Bs" onclick="SWG('+g+')">'+g+'ml</button>');h+='</div></div>';
+h+='<div class="C"><div class="T">Últimos 7 dias</div><div style="display:flex;justify-content:space-between;gap:6px">';WKD().forEach(d=>{const e=D.sau.w.h.find(x=>x.d===d.date);const f=e&&e.a>=D.sau.w.g;h+='<div style="text-align:center"><div class="dd '+(f?'f':'')+'">'+d.lb.charAt(0).toUpperCase()+'</div><div style="font-size:10px;color:var(--fg2);margin-top:3px">'+(e?e.a:0)+'ml</div></div>'});h+='</div></div>'}
+if(S.sau==='im'){h+='<div class="C"><div class="T">Calcular IMC, TMB e Macros</div><div class="g2"><input class="I" id="si-p" type="number" step="0.1" placeholder="Peso (kg)" value="'+(D.sau.i?D.sau.i.p:'')+'"><input class="I" id="si-a" type="number" step="0.01" placeholder="Altura (m)" value="'+(D.sau.i?D.sau.i.a:'')+'"></div><div class="g2"><input class="I" id="si-i" type="number" placeholder="Idade" value="'+(D.sau.i?D.sau.i.i:'')+'"><select class="I" id="si-s"><option value="" '+(D.sau.i&&D.sau.i.s?'':'selected')+'>Sexo</option><option value="M" '+(D.sau.i&&D.sau.i.s==='M'?'selected':'')+'>Masc</option><option value="F" '+(D.sau.i&&D.sau.i.s==='F'?'selected':'')+'>Fem</option></select></div>';
+const at=D.sau.i?D.sau.i.av:'';h+='<select class="I" id="si-av"><option value="" '+(at?'':'selected')+'>Atividade</option><option value="1.2" '+(at==='1.2'?'selected':'')+'>Sedentário</option><option value="1.375" '+(at==='1.375'?'selected':'')+'>Leve</option><option value="1.55" '+(at==='1.55'?'selected':'')+'>Moderado</option><option value="1.725" '+(at==='1.725'?'selected':'')+'>Intenso</option><option value="1.9" '+(at==='1.9'?'selected':'')+'>Atleta</option></select><button class="B Bs" onclick="SCI()">Calcular</button></div>';
+if(D.sau.i&&D.sau.i.r){const r=D.sau.i.r;h+='<div class="g2"><div class="rb"><div class="rv">'+r.imc+'</div><div class="rl">IMC — '+r.cl+'</div></div><div class="rb"><div class="rv">'+Math.round(r.t)+'</div><div class="rl">TMB (kcal)</div></div></div>';
+h+='<div class="g3"><div class="rb"><div class="rv">'+Math.round(r.pr)+'g</div><div class="rl">Proteína</div></div><div class="rb"><div class="rv">'+Math.round(r.cb)+'g</div><div class="rl">Carbo</div></div><div class="rb"><div class="rv">'+Math.round(r.gd)+'g</div><div class="rl">Gordura</div></div></div>';
+h+='<div class="C"><div class="T">Gasto calórico</div><div class="g2"><div class="rb"><div class="rv">'+Math.round(r.t*1.2)+'</div><div class="rl">Sedentário</div></div><div class="rb"><div class="rv">'+Math.round(r.t*parseFloat(D.sau.i.av||1.2))+'</div><div class="rl">Seu nível</div></div></div></div>'}}
+if(S.sau==='re'){const ds=['Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],rf=['Café','Almoço','Jantar','Lanche'];h+='<div class="C"><div class="T">Plano semanal</div><div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;font-size:12px"><thead><tr><th style="text-align:left;padding:6px;border-bottom:1px solid var(--bd)">Refeição</th>';ds.forEach(d=>h+='<th style="text-align:center;padding:6px;border-bottom:1px solid var(--bd);font-size:11px">'+d+'</th>');h+='</tr></thead><tbody>';
+rf.forEach((ref,ri)=>{h+='<tr><td style="padding:6px;border-bottom:1px solid var(--bd);font-weight:500;font-size:12px">'+ref+'</td>';ds.forEach((dia,di)=>{const k=di+'_'+ri;const m=D.sau.m.find(x=>x.k===k);const ck=m&&m.c;h+='<td style="text-align:center;padding:6px;border-bottom:1px solid var(--bd)"><div class="mc '+(ck?'ck':'')+'" onclick="STM(''+k+'',''+ref+'',''+dia+'')">'+(ck?'<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg>':'')+'</div></td>'});h+='</tr>'});h+='</tbody></table></div></div>';
+const tl=rf.length*7,ft=D.sau.m.filter(m=>m.c).length;h+='<div class="C"><div class="T">Resumo semanal</div><span class="t">'+ft+'/'+tl+' refeições</span><div class="Pb" style="margin-top:8px"><div class="Pf" style="width:'+(tl>0?Math.round((ft/tl)*100):0)+'%"></div></div></div>';
+h+='<div class="C"><div class="T">Lista de compras sugerida</div><div style="font-size:12px;color:var(--fg2);margin-bottom:8px">Baseado nas refeições planejadas</div>';const sg={'Café':['Ovos','Pão integral','Frutas','Iogurte'],'Almoço':['Arroz','Feijão','Carne/Peixe','Salada'],'Jantar':['Sopa','Legumes','Frango'],'Lanche':['Frutas secas','Barrinha','Chá']};Object.entries(sg).forEach(([r,it])=>h+='<div style="margin-bottom:6px;font-size:13px"><strong>'+r+':</strong> '+it.join(', ')+'</div>');h+='</div>'}
+if(S.sau==='so'){h+='<div class="C"><div class="T">Registro de sono</div><div class="g2"><div><div style="font-size:12px;color:var(--fg2);margin-bottom:3px">Dormiu</div><input class="I" type="time" id="ss-st"></div><div><div style="font-size:12px;color:var(--fg2);margin-bottom:3px">Acordou</div><input class="I" type="time" id="ss-en"></div></div><div style="margin-bottom:8px;font-size:13px">Qualidade:</div><div style="display:flex;gap:6px;margin-bottom:10px">';['Ruim','Regular','Bom','Excelente'].forEach((q,i)=>h+='<button class="df" id="ss-q'+i+'" onclick="SSQ='+i+';for(let j=0;j<4;j++)$('ss-q'+j).classList.remove('s');$('ss-q'+i).classList.add('s')">'+q+'</button>');h+='</div><button class="B Bs" onclick="SAS()">Registrar</button></div>';
+h+='<div class="C"><div class="T">Calculadora de ciclos</div><div style="font-size:12px;color:var(--fg2);margin-bottom:10px">Se dormir agora, acorde às:</div>';const nw=new Date();for(let c=1;c<=6;c++){const wk=new Date(nw.getTime()+c*90*60000+15*60000);const tm=wk.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});h+='<div style="padding:6px 10px;border:1px solid var(--bd);border-radius:8px;margin-bottom:5px;font-size:13px">'+c+' ciclo'+(c>1?'s':'')+' ('+(c*1.5).toFixed(1)+'h) → <strong>'+tm+'</strong></div>'}h+='</div>';
+if(D.sau.sl.length){h+='<div class="C"><div class="T">Histórico</div>';D.sau.sl.slice(-7).reverse().forEach((s,i)=>{const qs=['Ruim','Regular','Bom','Excelente'];h+='<div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--bd)"><div><div style="font-size:13px;font-weight:500">'+s.d+'</div><div style="font-size:11px;color:var(--fg2)">'+s.h+'h · '+qs[s.q]+'</div></div><div class="ra"><button class="db" onclick="SDL('+i+')">×</button></div></div>'});h+='</div>';const av=(D.sau.sl.reduce((a,s)=>a+s.h,0)/D.sau.sl.length).toFixed(1);h+='<div class="g2"><div class="Sb"><div class="Sv">'+av+'h</div><div class="Sl">Média</div></div><div class="Sb"><div class="Sv">'+D.sau.sl.length+'</div><div class="Sl">Noites</div></div></div>'}
+else h+='<div class="E">Nenhum registro de sono.</div>'}
+Ct.innerHTML=h}
+window.SAW=function(ml){D.sau.w.t+=ml;const td=new Date().toISOString().split('T')[0];const e=D.sau.w.h.find(x=>x.d===td);if(e)e.a=D.sau.w.t;else D.sau.w.h.push({d:td,a:D.sau.w.t});if(D.sau.w.h.length>7)D.sau.w.h=D.sau.w.h.slice(-7);SV();RSA()}
+window.SRW=function(){D.sau.w.t=0;const td=new Date().toISOString().split('T')[0];const e=D.sau.w.h.find(x=>x.d===td);if(e)e.a=0;SV();RSA()}
+window.SWG=function(g){D.sau.w.g=g;SV();RSA()}
+window.SCI=function(){const p=parseFloat($('si-p').value),a=parseFloat($('si-a').value),i=parseInt($('si-i').value),s=$('si-s').value,av=$('si-av').value;if(!p||!a||!i||!s||!av)return;const imc=p/(a*a);let cl='';if(imc<18.5)cl='Abaixo do peso';else if(imc<25)cl='Peso normal';else if(imc<30)cl='Sobrepeso';else cl='Obesidade';let tmb=s==='M'?88.36+(13.4*p)+(4.8*a*100)-(5.7*i):447.6+(9.2*p)+(3.1*a*100)-(4.3*i);D.sau.i={p,a,i,s,av,r:{imc:imc.toFixed(1),cl,t:tmb,pr:p*2,cb:tmb*parseFloat(av)*0.5/4,gd:tmb*parseFloat(av)*0.25/9}};SV();RSA()}
+window.STM=function(k,r,d){const ix=D.sau.m.findIndex(x=>x.k===k);if(ix>=0)D.sau.m.splice(ix,1);else D.sau.m.push({k,rf:r,d,c:true});SV();RSA()}
+window.SAS=function(){const st=$('ss-st').value,en=$('ss-en').value;if(!st||!en||SSQ===null)return;const[sh,sm]=st.split(':').map(Number),[eh,em]=en.split(':').map(Number);let hs=(eh*60+em-sh*60-sm)/60;if(hs<0)hs+=24;D.sau.sl.push({d:new Date().toLocaleDateString('pt-BR'),h:parseFloat(hs.toFixed(1)),q:SSQ});SSQ=null;SV();RSA()}
+window.SDL=function(i){D.sau.sl.splice(i,1);SV();RSA()}
+
+/* PRODUTIVIDADE */
+let PT={r:false,t:25*60,m:'focus',iv:null},PSM=null;
+function RPR(){let h='<div class="S">';['po','ka','ha','di'].forEach(x=>h+='<button class="s '+(S.pro===x?'a':'')+'" onclick="SS('pro',''+x+'')">'+{po:'Pomodoro',ka:'Kanban',ha:'Hábitos',di:'Diário'}[x]+'</button>');h+='</div>';
+if(S.pro==='po'){h+='<div class="C" style="text-align:center"><div style="font-size:13px;color:var(--fg2);margin-bottom:8px">'+(PT.m==='focus'?'Foco':'Pausa')+'</div><div class="td" id="pt-d">'+FT(PT.t)+'</div><div style="display:flex;justify-content:center;gap:10px;margin-bottom:14px"><button class="B Bs" id="pt-tg" onclick="PTG()">'+(PT.r?'Pausar':'Iniciar')+'</button><button class="B2 Bs" onclick="PTR()">Reiniciar</button><button class="B2 Bs" onclick="PTS()">'+(PT.m==='focus'?'Pausa':'Foco')+'</button></div><div style="display:flex;justify-content:center;gap:6px"><button class="B2 Bs" onclick="PTM(25)">25min</button><button class="B2 Bs" onclick="PTM(45)">45min</button><button class="B2 Bs" onclick="PTM(5)">5min</button><button class="B2 Bs" onclick="PTM(15)">15min</button></div></div>';
+h+='<div class="g2"><div class="Sb"><div class="Sv">'+D.pro.p.ss.length+'</div><div class="Sl">Sessões</div></div><div class="Sb"><div class="Sv">'+D.pro.p.ss.reduce((a,s)=>a+(s.dur||25),0)+'</div><div class="Sl">Minutos</div></div></div>';
+if(D.pro.p.ss.length){h+='<div class="C"><div class="T">Histórico</div>';D.pro.p.ss.slice(-10).reverse().forEach(s=>h+='<div class="sr"><span>'+s.d+'</span><span>'+s.dur+'min · '+s.m+'</span></div>');h+='</div>'}}
+if(S.pro==='ka'){h+='<div class="C"><div class="T">Nova tarefa</div><input class="I" id="pk-t" placeholder="Descrição"><button class="B Bs" onclick="PAK()">Adicionar</button></div><div class="g3">';
+[['t','A Fazer',D.pro.k.t],['d','Fazendo',D.pro.k.d],['dn','Concluído',D.pro.k.dn]].forEach(([k,l,it])=>{h+='<div class="kc"><div class="kch">'+l+' ('+it.length+')</div>';it.forEach((item,idx)=>{h+='<div class="kca"><div style="display:flex;justify-content:space-between;align-items:flex-start"><div style="flex:1;padding-right:8px;font-size:12px">'+E(item)+'</div><div class="ra">'+(k!=='dn'?'<button class="db" style="margin-right:4px" onclick="PMK(''+k+'','+idx+')">→</button>':'')+'<button class="db" onclick="PDK(''+k+'','+idx+')">×</button></div></div></div>'});h+='</div>'});h+='</div>'}
+if(S.pro==='ha'){h+='<div class="C"><div class="T">Novo hábito</div><input class="I" id="ph-n" placeholder="Nome"><input class="I" id="ph-g" type="number" placeholder="Meta semanal (dias)"><button class="B Bs" onclick="PAH()">Adicionar</button></div>';
+const td=new Date().toISOString().split('T')[0];
+if(!D.pro.hb.length)h+='<div class="E">Nenhum hábito.</div>';
+else{h+='<div class="C"><div class="T">Hoje — '+new Date().toLocaleDateString('pt-BR')+'</div>';D.pro.hb.forEach((hab,i)=>{const ck=hab.l&&hab.l[td];h+='<div class="hr"><div class="hc '+(ck?'ck':'')+'" onclick="PTH('+i+')">'+(ck?'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg>':'')+'</div><div style="flex:1;font-size:14px">'+E(hab.n)+'</div><div style="font-size:12px;color:var(--fg2)">🔥 '+hab.st+' dias</div><div class="ra"><button class="db" onclick="PDH('+i+')">×</button></div></div>'});h+='</div>';
+h+='<div class="C"><div class="T">Streaks da semana</div><div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;font-size:12px"><thead><tr><th style="text-align:left;padding:6px">Hábito</th>';for(let d=0;d<7;d++){const dt=new Date();dt.setDate(dt.getDate()-6+d);h+='<th style="text-align:center;padding:6px;font-size:11px">'+['D','S','T','Q','Q','S','S'][dt.getDay()]+'<br>'+dt.getDate()+'</th>'}h+='</tr></thead><tbody>';D.pro.hb.forEach(hab=>{h+='<tr><td style="padding:6px;font-size:13px">'+E(hab.n)+'</td>';for(let d=0;d<7;d++){const dt=new Date();dt.setDate(dt.getDate()-6+d);const ds=dt.toISOString().split('T')[0];const dn=hab.l&&hab.l[ds];h+='<td style="text-align:center;padding:6px"><div style="width:18px;height:18px;border-radius:4px;margin:0 auto;background:'+(dn?'var(--fg)':'var(--hov)')+'"></div></td>'}h+='</tr>'});h+='</tbody></table></div></div>'}}
+if(S.pro==='di'){h+='<div class="C"><div class="T">Nova entrada</div><textarea class="I" id="pd-t" rows="4" placeholder="Como foi seu dia?" style="resize:vertical"></textarea><div style="margin-bottom:12px"><div style="font-size:13px;color:var(--fg2);margin-bottom:8px">Como você se sentiu?</div><div style="display:flex;gap:8px">';['😫','😐','🙂','😄','🤩'].forEach((m,i)=>h+='<button class="mbt" id="pm-'+i+'" onclick="PSM='+i+';for(let j=0;j<5;j++)$('pm-'+j).classList.remove('s');$('pm-'+i).classList.add('s')">'+m+'</button>');h+='</div></div><button class="B Bs" onclick="PAD()">Salvar</button></div>';
+if(!D.pro.di.length)h+='<div class="E">Nenhuma entrada.</div>';
+else{h+='<div style="font-size:13px;color:var(--fg2);margin-bottom:8px">'+D.pro.di.length+' entrada'+(D.pro.di.length>1?'s':'')+'</div>';D.pro.di.slice().reverse().forEach((en,i)=>{h+='<div class="ec"><div style="display:flex;justify-content:space-between;align-items:flex-start"><div class="ed">'+en.d+'</div><div class="ra"><button class="db" onclick="PDD('+i+')">×</button></div></div><div class="et">'+E(en.t)+'</div><div style="font-size:16px;margin-top:4px">'+['😫','😐','🙂','😄','🤩'][en.m]+'</div></div>'})}}
+Ct.innerHTML=h}
+window.PTG=function(){if(PT.r){clearInterval(PT.iv);PT.r=false}else{PT.r=true;PT.iv=setInterval(function(){if(PT.t>0){PT.t--;const el=$('pt-d');if(el)el.textContent=FT(PT.t)}else{clearInterval(PT.iv);PT.r=false;D.pro.p.ss.push({d:new Date().toLocaleDateString('pt-BR'),dur:PT.m==='focus'?25:5,m:PT.m});SV();RPR()}},1000)}RPR()}
+window.PTR=function(){if(PT.iv)clearInterval(PT.iv);PT.r=false;PT.t=PT.m==='focus'?25*60:5*60;RPR()}
+window.PTS=function(){if(PT.iv)clearInterval(PT.iv);PT.r=false;PT.m=PT.m==='focus'?'break':'focus';PT.t=PT.m==='focus'?25*60:5*60;RPR()}
+window.PTM=function(m){if(PT.iv)clearInterval(PT.iv);PT.r=false;PT.t=m*60;RPR()}
+window.PAK=function(){const t=$('pk-t').value.trim();if(!t)return;D.pro.k.t.push(t);SV();RPR()}
+window.PMK=function(k,i){const it=D.pro.k[k].splice(i,1)[0];if(k==='t')D.pro.k.d.push(it);else if(k==='d')D.pro.k.dn.push(it);SV();RPR()}
+window.PDK=function(k,i){D.pro.k[k].splice(i,1);SV();RPR()}
+window.PAH=function(){const n=$('ph-n').value.trim(),g=parseInt($('ph-g').value)||7;if(!n)return;D.pro.hb.push({n,g,st:0,l:{}});SV();RPR()}
+window.PTH=function(i){const td=new Date().toISOString().split('T')[0];if(!D.pro.hb[i].l)D.pro.hb[i].l={};if(D.pro.hb[i].l[td]){delete D.pro.hb[i].l[td];D.pro.hb[i].st=Math.max(0,D.pro.hb[i].st-1)}else{D.pro.hb[i].l[td]=true;D.pro.hb[i].st++}SV();RPR()}
+window.PDH=function(i){D.pro.hb.splice(i,1);SV();RPR()}
+window.PAD=function(){const t=$('pd-t').value.trim();if(!t||PSM===null)return;D.pro.di.push({d:new Date().toLocaleDateString('pt-BR'),t,m:PSM});PSM=null;SV();RPR()}
+window.PDD=function(i){D.pro.di.splice(D.pro.di.length-1-i,1);SV();RPR()}
+
+RWA();
+})();
+</script>
+</body>
+</html>
